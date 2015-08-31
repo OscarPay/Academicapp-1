@@ -1,6 +1,5 @@
 package com.example.user.academicapp;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +12,14 @@ import com.example.user.academicapp.Models.Category;
 import java.util.ArrayList;
 import java.util.List;
 
+import roboguice.fragment.RoboFragment;
+import roboguice.inject.ContentView;
+
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
-
-    public MainActivityFragment() {
-    }
+@ContentView(R.layout.fragment_main)
+public class MainActivityFragment extends RoboFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

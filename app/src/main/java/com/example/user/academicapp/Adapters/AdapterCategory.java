@@ -1,60 +1,56 @@
 package com.example.user.academicapp.Adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.user.academicapp.Models.Category;
 import com.example.user.academicapp.R;
+import com.example.user.academicapp.viewholders.ViewHolderCategory;
 
 import java.util.List;
 
 /**
  * Created by USER on 30/08/2015.
  */
-public class AdapterCategory extends BaseAdapter{
+public class AdapterCategory extends ArrayAdapter<Category> {
 
-    Context c;
-    List<Category> categories;
+    private Context c;
+    private List<Category> categories;
 
     public AdapterCategory(Context c, List<Category> categories) {
-        super();
+        super(c, R.layout.list_item_category, categories);
         this.c = c;
         this.categories = categories;
     }
 
     @Override
-    public int getCount() {
-        return categories.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return categories.size();
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LayoutInflater inflater = ((Activity)c).getLayoutInflater();
-        View view = inflater.inflate(R.layout.list_item_category, null);
+        View currentView = convertView;
+        ViewHolderCategory holder;
 
-        TextView name = (TextView) view.findViewById(R.id.list_item_category_name);
-        TextView description = (TextView) view.findViewById(R.id.list_item_category_description);
+        if(currentView == null){
+            LayoutInflater inflater = LayoutInflater.from(c);
+            currentView = inflater.inflate(R.layout.list_item_category, parent,false);
+            holder = new ViewHolderCategory();
+            holder.image = (ImageView) currentView.findViewById(R.id.list_item_imageView_icon);
+            holder.title = (TextView) currentView.findViewById(R.id.list_item_category_name);
+            holder.description = (TextView) currentView.findViewById(R.id.list_item_category_description);
+            currentView.setTag(holder);
+        }
 
-        name.setText(categories.get(position).getName());
-        description.setText(categories.get(position).getDescription());
+        holder = (ViewHolderCategory) currentView.getTag();
+        Category category = categories.get(position);
 
-        return view;
+        holder.title.setText(category.getName());
+        holder.description.setText(category.getDescription());
+
+        return currentView;
     }
 
 }

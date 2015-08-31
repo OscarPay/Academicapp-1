@@ -3,14 +3,16 @@ package com.example.user.academicapp;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import roboguice.activity.RoboActivity;
 
-public class MainActivity extends RoboActivity {
+import roboguice.activity.RoboFragmentActivity;
+import roboguice.inject.ContentView;
+
+@ContentView(R.layout.activity_main)
+public class MainActivity extends RoboFragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
     }
 
 
