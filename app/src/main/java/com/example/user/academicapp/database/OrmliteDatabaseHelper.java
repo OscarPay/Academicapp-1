@@ -1,13 +1,17 @@
 package com.example.user.academicapp.database;
 
-import roboguice.inject.ContextSingleton;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.user.academicapp.Models.Category;
+import com.example.user.academicapp.Models.Theme;
+import com.example.user.academicapp.Models.User;
 import com.google.inject.Inject;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+
+import roboguice.inject.ContextSingleton;
 
 @ContextSingleton
 public class OrmliteDatabaseHelper extends OrmLiteSqliteOpenHelper{
@@ -39,21 +43,9 @@ public class OrmliteDatabaseHelper extends OrmLiteSqliteOpenHelper{
 	}
 
 	private static Class<?>[] mDbClasses = {
-			/*
-		Answer.class,
-		CompletedSurvey.class,
-		Binnacle.class,
-		Location.class,
-		QuestionOption.class,
-		Question.class,
-		Section.class,
-		SocialToken.class,
-		Survey.class,
-		Task.class,
-		User.class,
-		FacebookTask.class,
-		TwitterTask.class,
-		CompletedTask.class*/
+			Category.class,
+			Theme.class,
+			User.class
 	};
 	
 	private static final String DATABASE_NAME = "SurveyApp.db";

@@ -10,6 +10,8 @@ import com.j256.ormlite.table.DatabaseTable;
 public class Theme {
     private static final String ID = "Id";
     private static final String NAME = "Name";
+    private static final String DESCRIPTION = "Description";
+    private static final String CATEGORY= "Category";
 
     public Theme(){
 
@@ -27,8 +29,24 @@ public class Theme {
 
     public String getName(){ return Name;}
 
+    public void setDescription(String description){ this.Description = description;}
+
+    public String getDescription(){ return Description;}
+
+    public void setCategory(Category category){
+        this.category = category;
+    }
+
+    public Category getCategory(){
+        return category;
+    }
+
     @DatabaseField(columnName = ID, generatedId = true)
     private int Id;
     @DatabaseField(columnName = NAME)
     private String Name;
+    @DatabaseField(columnName = DESCRIPTION)
+    private String Description;
+    @DatabaseField(foreign = true, foreignColumnName = Category.ID, foreignAutoRefresh = true, columnName = CATEGORY)
+    private transient Category category;
 }

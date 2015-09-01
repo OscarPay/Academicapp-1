@@ -1,7 +1,10 @@
 package com.example.user.academicapp.Models;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
+
+import java.util.Collection;
 
 /**
  * Created by USER on 30/08/2015.
@@ -43,10 +46,20 @@ public class Category {
         this.id = id;
     }
 
+    public Collection<Theme> getThemes(){
+        return themes;
+    }
+
+    public void setThemes(Collection<Theme> themes){
+        this.themes = themes;
+    }
+
     @DatabaseField(columnName = ID, generatedId = true)
     private int id;
     @DatabaseField(columnName = NAME)
     private String name;
     @DatabaseField(columnName = DESCRIPTION)
     private String description;
+    @ForeignCollectionField(eager = true)
+    private Collection<Theme> themes;
 }

@@ -1,9 +1,4 @@
-package com.community.survey.database.ormlite;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
+package com.example.user.academicapp.database.ormlite;
 
 import android.util.Log;
 
@@ -11,6 +6,11 @@ import com.example.user.academicapp.database.OrmliteDatabaseHelper;
 import com.example.user.academicapp.repository.interfaces.Repository;
 import com.example.user.academicapp.repository.interfaces.SearchCriteria;
 import com.j256.ormlite.dao.Dao;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
 
 public class OrmliteBaseRepository<T> implements Repository<T>{
 
